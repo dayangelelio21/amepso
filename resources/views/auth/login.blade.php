@@ -8,7 +8,12 @@
             {{-- AMEPSO Branding --}}
             <div class="text-center mb-8">
 
-                <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
+                <div
+                    class="mx-auto w-16 h-16 rounded-2xl
+                           bg-gradient-to-br from-blue-600 to-indigo-700
+                           flex items-center justify-center
+                           shadow-lg"
+                >
 
                     <span class="text-2xl text-white">
                         💳
@@ -17,12 +22,18 @@
                 </div>
 
 
-                <h1 class="mt-5 text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <h1
+                    class="mt-5 text-3xl font-bold
+                           text-gray-900 dark:text-gray-100"
+                >
                     AMEPSO
                 </h1>
 
 
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p
+                    class="mt-2 text-sm
+                           text-gray-500 dark:text-gray-400"
+                >
                     Secure digital wallet & electricity payments
                 </p>
 
@@ -30,17 +41,29 @@
 
 
             {{-- Login Card --}}
-            <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl shadow-xl overflow-hidden">
+            <div
+                class="bg-white dark:bg-gray-800
+                       border border-gray-100 dark:border-gray-700
+                       rounded-3xl
+                       shadow-xl
+                       overflow-hidden"
+            >
 
 
                 {{-- Card Header --}}
                 <div class="px-6 sm:px-8 pt-7">
 
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">
+                    <h2
+                        class="text-xl font-bold
+                               text-gray-900 dark:text-gray-100"
+                    >
                         Welcome back
                     </h2>
 
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    <p
+                        class="mt-1 text-sm
+                               text-gray-500 dark:text-gray-400"
+                    >
                         Sign in to access your AMEPSO wallet.
                     </p>
 
@@ -80,7 +103,14 @@
 
                         <x-text-input
                             id="email"
-                            class="block mt-2 w-full rounded-xl border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
                             type="email"
                             name="email"
                             :value="old('email')"
@@ -111,7 +141,14 @@
 
                         <x-text-input
                             id="password"
-                            class="block mt-2 w-full rounded-xl border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
                             type="password"
                             name="password"
                             required
@@ -139,11 +176,22 @@
                             <input
                                 id="remember_me"
                                 type="checkbox"
-                                class="rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-blue-600 shadow-sm focus:ring-blue-500 dark:focus:ring-blue-500"
+                                class="rounded
+                                       border-gray-300
+                                       dark:border-gray-600
+                                       dark:bg-gray-700
+                                       text-blue-600
+                                       shadow-sm
+                                       focus:ring-blue-500
+                                       dark:focus:ring-blue-500"
                                 name="remember"
                             >
 
-                            <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
+                            <span
+                                class="ms-2 text-sm
+                                       text-gray-600
+                                       dark:text-gray-400"
+                            >
                                 {{ __('Remember me') }}
                             </span>
 
@@ -156,9 +204,23 @@
                     <div class="mt-7 flex flex-col gap-4">
 
 
+                        {{-- Login Button --}}
                         <button
                             type="submit"
-                            class="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-sm hover:shadow transition"
+                            class="w-full
+                                   inline-flex
+                                   items-center
+                                   justify-center
+                                   gap-2
+                                   py-3.5
+                                   bg-blue-600
+                                   hover:bg-blue-700
+                                   text-white
+                                   font-bold
+                                   rounded-xl
+                                   shadow-sm
+                                   hover:shadow
+                                   transition"
                         >
 
                             <span>
@@ -172,14 +234,69 @@
                         </button>
 
 
+                        {{-- Forgot Password --}}
                         @if (Route::has('password.request'))
 
                             <a
                                 href="{{ route('password.request') }}"
-                                class="text-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition"
+                                class="text-center
+                                       text-sm
+                                       font-medium
+                                       text-blue-600
+                                       dark:text-blue-400
+                                       hover:text-blue-700
+                                       dark:hover:text-blue-300
+                                       transition"
                             >
                                 {{ __('Forgot your password?') }}
                             </a>
+
+                        @endif
+
+
+                        {{-- Register --}}
+                        @if (Route::has('register'))
+
+                            <div
+                                class="pt-5
+                                       mt-2
+                                       border-t
+                                       border-gray-200
+                                       dark:border-gray-700"
+                            >
+
+                                <p
+                                    class="text-center
+                                           text-sm
+                                           text-gray-500
+                                           dark:text-gray-400"
+                                >
+                                    Don't have an AMEPSO account?
+                                </p>
+
+
+                                <a
+                                    href="{{ route('register') }}"
+                                    class="mt-3
+                                           w-full
+                                           inline-flex
+                                           items-center
+                                           justify-center
+                                           py-3
+                                           rounded-xl
+                                           border
+                                           border-blue-600
+                                           text-blue-600
+                                           dark:text-blue-400
+                                           font-semibold
+                                           hover:bg-blue-50
+                                           dark:hover:bg-blue-900/20
+                                           transition"
+                                >
+                                    Create an account
+                                </a>
+
+                            </div>
 
                         @endif
 
@@ -192,19 +309,47 @@
 
 
             {{-- Security Notice --}}
-            <div class="mt-6 flex items-start gap-3 px-2">
+            <div
+                class="mt-6
+                       flex
+                       items-start
+                       gap-3
+                       px-2"
+            >
 
-                <div class="w-9 h-9 rounded-xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center flex-shrink-0">
+                <div
+                    class="w-9 h-9
+                           rounded-xl
+                           bg-green-100
+                           dark:bg-green-900/40
+                           flex
+                           items-center
+                           justify-center
+                           flex-shrink-0"
+                >
                     🔐
                 </div>
 
+
                 <div>
 
-                    <p class="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                    <p
+                        class="text-xs
+                               font-semibold
+                               text-gray-700
+                               dark:text-gray-300"
+                    >
                         Secure login
                     </p>
 
-                    <p class="mt-1 text-xs leading-5 text-gray-500 dark:text-gray-400">
+
+                    <p
+                        class="mt-1
+                               text-xs
+                               leading-5
+                               text-gray-500
+                               dark:text-gray-400"
+                    >
                         Your account and wallet information are protected by AMEPSO.
                     </p>
 
@@ -216,11 +361,16 @@
             {{-- Footer --}}
             <div class="mt-8 text-center">
 
-                <p class="text-xs text-gray-400 dark:text-gray-500">
+                <p
+                    class="text-xs
+                           text-gray-400
+                           dark:text-gray-500"
+                >
                     AMEPSO • Secure digital wallet and electricity payments
                 </p>
 
             </div>
+
 
         </div>
 
