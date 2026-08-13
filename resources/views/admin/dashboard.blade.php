@@ -1,7 +1,7 @@
 <x-app-layout>
 
+    {{-- Header --}}
     <x-slot name="header">
-
         <div>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 AMEPSO Admin Dashboard
@@ -11,13 +11,14 @@
                 Manage and monitor the AMEPSO digital wallet system.
             </p>
         </div>
-
     </x-slot>
 
 
+    {{-- Main Content --}}
     <div class="py-8">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
 
             {{-- Welcome --}}
             <div class="mb-8">
@@ -37,16 +38,22 @@
             </div>
 
 
-            {{-- Statistics --}}
+            {{-- ========================================================= --}}
+            {{-- STATISTICS --}}
+            {{-- ========================================================= --}}
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
 
-                {{-- Users --}}
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+                {{-- Total Users --}}
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                >
 
                     <div class="flex items-center justify-between">
 
                         <div>
+
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 Total Users
                             </p>
@@ -54,9 +61,12 @@
                             <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
                                 {{ number_format($totalUsers) }}
                             </p>
+
                         </div>
 
-                        <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center"
+                        >
                             <span class="text-xl">👥</span>
                         </div>
 
@@ -65,12 +75,15 @@
                 </div>
 
 
-                {{-- Wallet Balance --}}
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+                {{-- Total Wallet Balance --}}
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                >
 
                     <div class="flex items-center justify-between">
 
                         <div>
+
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 Total Wallet Balance
                             </p>
@@ -78,9 +91,12 @@
                             <p class="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
                                 ₱{{ number_format((float) $totalWalletBalance, 2) }}
                             </p>
+
                         </div>
 
-                        <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center"
+                        >
                             <span class="text-xl">💰</span>
                         </div>
 
@@ -89,12 +105,15 @@
                 </div>
 
 
-                {{-- Top Ups --}}
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+                {{-- Completed Top Ups --}}
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                >
 
                     <div class="flex items-center justify-between">
 
                         <div>
+
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 Completed Top Ups
                             </p>
@@ -106,9 +125,12 @@
                             <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
                                 {{ number_format($totalTopUps) }} total records
                             </p>
+
                         </div>
 
-                        <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center"
+                        >
                             <span class="text-xl">💳</span>
                         </div>
 
@@ -118,11 +140,14 @@
 
 
                 {{-- Transactions --}}
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                >
 
                     <div class="flex items-center justify-between">
 
                         <div>
+
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 Transactions
                             </p>
@@ -130,9 +155,12 @@
                             <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
                                 {{ number_format($totalTransactions) }}
                             </p>
+
                         </div>
 
-                        <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center"
+                        >
                             <span class="text-xl">📜</span>
                         </div>
 
@@ -143,7 +171,10 @@
             </div>
 
 
-            {{-- ORMECO Overview --}}
+            {{-- ========================================================= --}}
+            {{-- ORMECO OVERVIEW --}}
+            {{-- ========================================================= --}}
+
             <div class="mt-8">
 
                 <div class="mb-4">
@@ -163,7 +194,9 @@
 
 
                     {{-- Total Bills --}}
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    <div
+                        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                    >
 
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Total Bills
@@ -176,8 +209,10 @@
                     </div>
 
 
-                    {{-- Paid --}}
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    {{-- Paid Bills --}}
+                    <div
+                        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                    >
 
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Paid Bills
@@ -190,8 +225,10 @@
                     </div>
 
 
-                    {{-- Unpaid --}}
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    {{-- Unpaid Bills --}}
+                    <div
+                        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
+                    >
 
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Unpaid Bills
@@ -208,7 +245,10 @@
             </div>
 
 
-            {{-- Recent Transactions --}}
+            {{-- ========================================================= --}}
+            {{-- RECENT TRANSACTIONS --}}
+            {{-- ========================================================= --}}
+
             <div class="mt-8">
 
                 <div class="flex items-center justify-between mb-4">
@@ -228,7 +268,9 @@
                 </div>
 
 
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden">
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm"
+                >
 
                     @if ($recentTransactions->count())
 
@@ -240,10 +282,13 @@
                                     $isCredit = $transaction->type === 'top_up';
                                 @endphp
 
+
                                 <div class="p-5">
 
                                     <div class="flex items-center justify-between gap-4">
 
+
+                                        {{-- Transaction Information --}}
                                         <div class="flex items-center gap-4 min-w-0">
 
                                             <div
@@ -252,27 +297,39 @@
                                                     ? 'bg-green-100 dark:bg-green-900/40'
                                                     : 'bg-red-100 dark:bg-red-900/40' }}"
                                             >
+
                                                 <span>
                                                     {{ $isCredit ? '＋' : '−' }}
                                                 </span>
+
                                             </div>
 
 
                                             <div class="min-w-0">
 
                                                 <p class="font-semibold text-gray-900 dark:text-gray-100">
+
                                                     @if ($transaction->type === 'top_up')
+
                                                         Wallet Top Up
+
                                                     @elseif ($transaction->type === 'bill_payment')
+
                                                         ORMECO Bill Payment
+
                                                     @else
+
                                                         {{ ucfirst(str_replace('_', ' ', $transaction->type)) }}
+
                                                     @endif
+
                                                 </p>
+
 
                                                 <p class="text-sm text-gray-500 dark:text-gray-400">
                                                     {{ $transaction->description ?? 'Wallet transaction' }}
                                                 </p>
+
 
                                                 <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">
                                                     {{ $transaction->created_at?->format('M d, Y • h:i A') }}
@@ -283,6 +340,7 @@
                                         </div>
 
 
+                                        {{-- Amount --}}
                                         <div class="text-right flex-shrink-0">
 
                                             <p
@@ -291,9 +349,12 @@
                                                     ? 'text-green-600 dark:text-green-400'
                                                     : 'text-red-600 dark:text-red-400' }}"
                                             >
+
                                                 {{ $isCredit ? '+' : '-' }}
                                                 ₱{{ number_format((float) $transaction->amount, 2) }}
+
                                             </p>
+
 
                                             <span class="text-xs text-gray-500 dark:text-gray-400">
                                                 {{ ucfirst($transaction->status) }}
@@ -334,7 +395,10 @@
             </div>
 
 
-            {{-- Quick Actions --}}
+            {{-- ========================================================= --}}
+            {{-- ADMIN ACTIONS --}}
+            {{-- ========================================================= --}}
+
             <div class="mt-8">
 
                 <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -349,9 +413,15 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
 
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    {{-- User Management --}}
+                    <a
+                        href="{{ route('admin.users.index') }}"
+                        class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-500 transition cursor-pointer"
+                    >
 
-                        <div class="w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center"
+                        >
                             👥
                         </div>
 
@@ -363,12 +433,18 @@
                             View and manage AMEPSO users.
                         </p>
 
-                    </div>
+                    </a>
 
 
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    {{-- Top Ups --}}
+                    <a
+                        href="{{ route('admin.topups.index') }}"
+                        class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-green-400 dark:hover:border-green-500 transition cursor-pointer"
+                    >
 
-                        <div class="w-11 h-11 rounded-xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center"
+                        >
                             💰
                         </div>
 
@@ -380,24 +456,99 @@
                             Monitor wallet balances and top ups.
                         </p>
 
-                    </div>
+                    </a>
 
 
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    {{-- Transactions --}}
+                    <a
+                        href="{{ route('admin.transactions.index') }}"
+                        class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-400 dark:hover:border-orange-500 transition cursor-pointer"
+                    >
 
-                        <div class="w-11 h-11 rounded-xl bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center"
+                        >
+                            📜
+                        </div>
+
+                        <h4 class="mt-4 font-semibold text-gray-900 dark:text-gray-100">
+                            Transactions
+                        </h4>
+
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            View wallet transaction history.
+                        </p>
+
+                    </a>
+
+
+                    {{-- ORMECO --}}
+                    <a
+                        href="{{ route('admin.ormeco.index') }}"
+                        class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-purple-400 dark:hover:border-purple-500 transition cursor-pointer"
+                    >
+
+                        <div
+                            class="w-11 h-11 rounded-xl bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center"
+                        >
                             ⚡
                         </div>
 
                         <h4 class="mt-4 font-semibold text-gray-900 dark:text-gray-100">
-                            ORMECO Payments
+                            ORMECO
                         </h4>
 
                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                            Monitor electricity bill payments.
+                            Manage ORMECO accounts and information.
                         </p>
 
-                    </div>
+                    </a>
+
+
+                    {{-- ORMECO Bills --}}
+                    <a
+                        href="{{ route('admin.ormeco-bills.index') }}"
+                        class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-yellow-400 dark:hover:border-yellow-500 transition cursor-pointer"
+                    >
+
+                        <div
+                            class="w-11 h-11 rounded-xl bg-yellow-100 dark:bg-yellow-900/40 flex items-center justify-center"
+                        >
+                            🧾
+                        </div>
+
+                        <h4 class="mt-4 font-semibold text-gray-900 dark:text-gray-100">
+                            ORMECO Bills
+                        </h4>
+
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            View and manage electricity bills.
+                        </p>
+
+                    </a>
+
+
+                    {{-- Create ORMECO Bill --}}
+                    <a
+                        href="{{ route('admin.ormeco-bills.create') }}"
+                        class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-red-400 dark:hover:border-red-500 transition cursor-pointer"
+                    >
+
+                        <div
+                            class="w-11 h-11 rounded-xl bg-red-100 dark:bg-red-900/40 flex items-center justify-center"
+                        >
+                            ➕
+                        </div>
+
+                        <h4 class="mt-4 font-semibold text-gray-900 dark:text-gray-100">
+                            Create ORMECO Bill
+                        </h4>
+
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            Add a new electricity bill.
+                        </p>
+
+                    </a>
 
                 </div>
 
