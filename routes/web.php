@@ -138,12 +138,15 @@ Route::middleware([
 
 /*
 |--------------------------------------------------------------------------
-| Welcome Page
+| Homepage
 |--------------------------------------------------------------------------
+|
+| Redirect the root URL to the AMEPSO login page.
+|
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 
@@ -280,6 +283,7 @@ Route::middleware([
      * Keep your existing TransactionController here
      * because it already handles the transaction history page.
      */
+
     Route::get('/transactions', [
         TransactionController::class,
         'index',
@@ -294,6 +298,7 @@ Route::middleware([
      * that controller contains the show() method that
      * securely checks the logged-in user's wallet.
      */
+
     Route::get('/transactions/{transaction}', [
         WalletTransactionController::class,
         'show',
