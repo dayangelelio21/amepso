@@ -32,6 +32,6 @@ class OrmecoAccount extends Model
      */
     public function bills()
     {
-        return $this->hasMany(OrmecoBill::class);
+        return $this->hasMany(\App\Models\OrmecoBill::class);
     }
 }

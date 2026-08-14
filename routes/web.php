@@ -161,7 +161,9 @@ Route::middleware([
 */
 
 Route::get('/', function () {
+
     return redirect()->route('login');
+
 });
 
 
@@ -207,7 +209,7 @@ Route::get('/dashboard', function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Load recent transactions
+    | Load recent wallet transactions
     |--------------------------------------------------------------------------
     */
 
@@ -224,13 +226,46 @@ Route::get('/dashboard', function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Find the user's ORMECO account
+    |--------------------------------------------------------------------------
+    */
+
+    $ormecoAccount = $user->ormecoAccount;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Find the user's unpaid ORMECO bills
+    |--------------------------------------------------------------------------
+    */
+
+    $pendingBills = collect();
+
+
+    if ($ormecoAccount) {
+
+        $pendingBills = $ormecoAccount
+            ->bills()
+            ->where('status', 'unpaid')
+            ->orderBy('due_date')
+            ->get();
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Dashboard
     |--------------------------------------------------------------------------
     */
 
     return view(
         'dashboard',
-        compact('wallet')
+        compact(
+            'wallet',
+            'ormecoAccount',
+            'pendingBills'
+        )
     );
 
 })->middleware([
