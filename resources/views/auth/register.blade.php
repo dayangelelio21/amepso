@@ -8,44 +8,63 @@
             <div class="text-center mb-8">
 
                 <div
-                    class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg"
+                    class="mx-auto w-16 h-16 rounded-2xl
+                           bg-gradient-to-br from-blue-600 to-indigo-700
+                           flex items-center justify-center
+                           shadow-lg"
                 >
                     <span class="text-2xl text-white">
                         💳
                     </span>
                 </div>
 
-                <h1 class="mt-5 text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <h1
+                    class="mt-5 text-3xl font-bold
+                           text-gray-900 dark:text-gray-100"
+                >
                     AMEPSO
                 </h1>
 
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p
+                    class="mt-2 text-sm
+                           text-gray-500 dark:text-gray-400"
+                >
                     Secure digital wallet & electricity payments
                 </p>
 
             </div>
 
 
-            {{-- Register Card --}}
+            {{-- Registration Card --}}
             <div
-                class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl shadow-xl overflow-hidden"
+                class="bg-white dark:bg-gray-800
+                       border border-gray-100 dark:border-gray-700
+                       rounded-3xl
+                       shadow-xl
+                       overflow-hidden"
             >
 
-                {{-- Card Header --}}
+                {{-- Header --}}
                 <div class="px-6 sm:px-8 pt-7">
 
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">
+                    <h2
+                        class="text-xl font-bold
+                               text-gray-900 dark:text-gray-100"
+                    >
                         Create your account
                     </h2>
 
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Get started with your AMEPSO digital wallet.
+                    <p
+                        class="mt-1 text-sm
+                               text-gray-500 dark:text-gray-400"
+                    >
+                        Create your AMEPSO wallet and link your ORMECO account.
                     </p>
 
                 </div>
 
 
-                {{-- Register Form --}}
+                {{-- Registration Form --}}
                 <form
                     method="POST"
                     action="{{ route('register') }}"
@@ -66,7 +85,14 @@
 
                         <x-text-input
                             id="name"
-                            class="block mt-2 w-full rounded-xl border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
                             type="text"
                             name="name"
                             :value="old('name')"
@@ -95,7 +121,14 @@
 
                         <x-text-input
                             id="email"
-                            class="block mt-2 w-full rounded-xl border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
                             type="email"
                             name="email"
                             :value="old('email')"
@@ -106,6 +139,50 @@
 
                         <x-input-error
                             :messages="$errors->get('email')"
+                            class="mt-2"
+                        />
+
+                    </div>
+
+
+                    {{-- ORMECO Account Number --}}
+                    <div class="mt-5">
+
+                        <x-input-label
+                            for="ormeco_account_number"
+                            :value="__('ORMECO Account Number')"
+                            class="text-gray-700 dark:text-gray-300 font-semibold"
+                        />
+
+                        <x-text-input
+                            id="ormeco_account_number"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
+                            type="text"
+                            name="ormeco_account_number"
+                            :value="old('ormeco_account_number')"
+                            required
+                            autocomplete="off"
+                            inputmode="numeric"
+                            placeholder="Enter your ORMECO account number"
+                        />
+
+                        <p
+                            class="mt-2 text-xs
+                                   text-gray-500 dark:text-gray-400"
+                        >
+                            Enter the ORMECO account number associated with
+                            your electricity service.
+                        </p>
+
+                        <x-input-error
+                            :messages="$errors->get('ormeco_account_number')"
                             class="mt-2"
                         />
 
@@ -123,7 +200,14 @@
 
                         <x-text-input
                             id="password"
-                            class="block mt-2 w-full rounded-xl border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
                             type="password"
                             name="password"
                             required
@@ -150,7 +234,14 @@
 
                         <x-text-input
                             id="password_confirmation"
-                            class="block mt-2 w-full rounded-xl border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500"
+                            class="block mt-2 w-full
+                                   rounded-xl
+                                   border-gray-200
+                                   dark:border-gray-600
+                                   dark:bg-gray-700
+                                   dark:text-gray-100
+                                   focus:border-blue-500
+                                   focus:ring-blue-500"
                             type="password"
                             name="password_confirmation"
                             required
@@ -166,28 +257,69 @@
                     </div>
 
 
-                    {{-- Actions --}}
-                    <div class="mt-7 flex flex-col gap-4">
+                    {{-- Register Button --}}
+                    <div class="mt-7">
 
                         <button
                             type="submit"
-                            class="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-sm hover:shadow transition"
+                            class="w-full
+                                   inline-flex
+                                   items-center
+                                   justify-center
+                                   gap-2
+                                   py-3.5
+                                   bg-blue-600
+                                   hover:bg-blue-700
+                                   text-white
+                                   font-bold
+                                   rounded-xl
+                                   shadow-sm
+                                   hover:shadow
+                                   transition"
                         >
+
                             <span>
-                                Create Account
+                                Create account
                             </span>
 
                             <span>
                                 →
                             </span>
+
                         </button>
 
+                    </div>
+
+
+                    {{-- Login Link --}}
+                    <div
+                        class="mt-6
+                               pt-5
+                               border-t
+                               border-gray-200
+                               dark:border-gray-700
+                               text-center"
+                    >
+
+                        <p
+                            class="text-sm
+                                   text-gray-500
+                                   dark:text-gray-400"
+                        >
+                            Already have an AMEPSO account?
+                        </p>
 
                         <a
                             href="{{ route('login') }}"
-                            class="text-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition"
+                            class="inline-block mt-2
+                                   text-sm
+                                   font-semibold
+                                   text-blue-600
+                                   dark:text-blue-400
+                                   hover:text-blue-700
+                                   dark:hover:text-blue-300"
                         >
-                            Already have an account? Log in
+                            Log in
                         </a>
 
                     </div>
@@ -197,49 +329,48 @@
             </div>
 
 
-            {{-- Wallet Features --}}
-            <div class="mt-6 grid grid-cols-3 gap-2">
+            {{-- Security Notice --}}
+            <div
+                class="mt-6
+                       flex
+                       items-start
+                       gap-3
+                       px-2"
+            >
 
-                <div class="text-center">
-
-                    <div
-                        class="mx-auto w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center"
-                    >
-                        💳
-                    </div>
-
-                    <p class="mt-2 text-[11px] text-gray-500 dark:text-gray-400">
-                        Digital Wallet
-                    </p>
-
+                <div
+                    class="w-9 h-9
+                           rounded-xl
+                           bg-green-100
+                           dark:bg-green-900/40
+                           flex
+                           items-center
+                           justify-center
+                           flex-shrink-0"
+                >
+                    🔐
                 </div>
 
+                <div>
 
-                <div class="text-center">
-
-                    <div
-                        class="mx-auto w-9 h-9 rounded-xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center"
+                    <p
+                        class="text-xs
+                               font-semibold
+                               text-gray-700
+                               dark:text-gray-300"
                     >
-                        💰
-                    </div>
-
-                    <p class="mt-2 text-[11px] text-gray-500 dark:text-gray-400">
-                        Easy Top Up
+                        Secure registration
                     </p>
 
-                </div>
-
-
-                <div class="text-center">
-
-                    <div
-                        class="mx-auto w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center"
+                    <p
+                        class="mt-1
+                               text-xs
+                               leading-5
+                               text-gray-500
+                               dark:text-gray-400"
                     >
-                        ⚡
-                    </div>
-
-                    <p class="mt-2 text-[11px] text-gray-500 dark:text-gray-400">
-                        Pay ORMECO
+                        Your account and ORMECO information are securely
+                        linked to your AMEPSO account.
                     </p>
 
                 </div>
@@ -250,7 +381,11 @@
             {{-- Footer --}}
             <div class="mt-8 text-center">
 
-                <p class="text-xs text-gray-400 dark:text-gray-500">
+                <p
+                    class="text-xs
+                           text-gray-400
+                           dark:text-gray-500"
+                >
                     AMEPSO • Secure digital wallet and electricity payments
                 </p>
 

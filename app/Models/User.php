@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(TopUp::class);
     }
+    
+        public function ormecoAccount()
+{
+    return $this->hasOne(\App\Models\OrmecoAccount::class);
+}
 }
