@@ -389,10 +389,6 @@
 
                 <div class="flex gap-3">
 
-                    <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center flex-shrink-0">
-                        🧪
-                    </div>
-
                 </div>
 
             </div>
