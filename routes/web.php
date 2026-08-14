@@ -70,10 +70,23 @@ Route::middleware([
         'index',
     ])->name('users.index');
 
+
     Route::get('/users/{user}', [
         \App\Http\Controllers\Admin\AdminUserController::class,
         'show',
     ])->name('users.show');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Assign / Remove Admin Role
+    |--------------------------------------------------------------------------
+    */
+
+    Route::patch('/users/{user}/role', [
+        \App\Http\Controllers\Admin\AdminUserController::class,
+        'updateRole',
+    ])->name('users.role');
 
 
     /*
@@ -123,10 +136,12 @@ Route::middleware([
         'index',
     ])->name('ormeco-bills.index');
 
+
     Route::get('/ormeco-bills/create', [
         OrmecoBillController::class,
         'create',
     ])->name('ormeco-bills.create');
+
 
     Route::post('/ormeco-bills', [
         OrmecoBillController::class,
@@ -159,6 +174,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
 
     $user = Auth::user();
+
 
     /*
     |--------------------------------------------------------------------------
@@ -277,27 +293,11 @@ Route::middleware([
     |--------------------------------------------------------------------------
     */
 
-    /*
-     * Transaction list.
-     *
-     * Keep your existing TransactionController here
-     * because it already handles the transaction history page.
-     */
-
     Route::get('/transactions', [
         TransactionController::class,
         'index',
     ])->name('transactions.index');
 
-
-    /*
-     * Individual transaction / digital receipt.
-     *
-     * IMPORTANT:
-     * This must use WalletTransactionController because
-     * that controller contains the show() method that
-     * securely checks the logged-in user's wallet.
-     */
 
     Route::get('/transactions/{transaction}', [
         WalletTransactionController::class,

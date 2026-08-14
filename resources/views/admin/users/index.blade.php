@@ -8,7 +8,7 @@
             </h2>
 
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                View and monitor AMEPSO user accounts.
+                View and manage AMEPSO user accounts and administrator access.
             </p>
         </div>
 
@@ -33,7 +33,7 @@
                     </h1>
 
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Manage and monitor registered AMEPSO users.
+                        Manage registered AMEPSO users and administrator access.
                     </p>
 
                 </div>
@@ -47,6 +47,73 @@
                 </a>
 
             </div>
+
+
+            {{-- Success Message --}}
+            @if (session('success'))
+
+                <div
+                    class="mb-6 rounded-xl
+                           border border-green-200
+                           dark:border-green-800
+                           bg-green-50
+                           dark:bg-green-900/20
+                           px-5 py-4"
+                >
+
+                    <p class="text-sm font-medium text-green-700 dark:text-green-300">
+                        {{ session('success') }}
+                    </p>
+
+                </div>
+
+            @endif
+
+
+            {{-- Error Message --}}
+            @if (session('error'))
+
+                <div
+                    class="mb-6 rounded-xl
+                           border border-red-200
+                           dark:border-red-800
+                           bg-red-50
+                           dark:bg-red-900/20
+                           px-5 py-4"
+                >
+
+                    <p class="text-sm font-medium text-red-700 dark:text-red-300">
+                        {{ session('error') }}
+                    </p>
+
+                </div>
+
+            @endif
+
+
+            {{-- Validation Errors --}}
+            @if ($errors->any())
+
+                <div
+                    class="mb-6 rounded-xl
+                           border border-red-200
+                           dark:border-red-800
+                           bg-red-50
+                           dark:bg-red-900/20
+                           px-5 py-4"
+                >
+
+                    @foreach ($errors->all() as $error)
+
+                        <p class="text-sm text-red-700 dark:text-red-300">
+                            {{ $error }}
+                        </p>
+
+                    @endforeach
+
+                </div>
+
+            @endif
 
 
             {{-- Search --}}
@@ -191,15 +258,92 @@
                                         </td>
 
 
-                                        {{-- Action --}}
-                                        <td class="px-6 py-5 text-right">
+                                        {{-- Actions --}}
+                                        <td class="px-6 py-5">
 
-                                            <a
-                                                href="{{ route('admin.users.show', $user) }}"
-                                                class="inline-flex px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition"
-                                            >
-                                                View
-                                            </a>
+                                            <div class="flex flex-col sm:flex-row justify-end gap-2">
+
+                                                {{-- View --}}
+                                                <a
+                                                    href="{{ route('admin.users.show', $user) }}"
+                                                    class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition"
+                                                >
+                                                    View
+                                                </a>
+
+
+                                                {{-- Don't allow admin to modify their own role --}}
+                                                @if ($user->getKey() !== auth()->user()->getKey())
+
+                                                    @if ($user->role === 'admin')
+
+                                                        {{-- Remove Admin --}}
+                                                        <form
+                                                            method="POST"
+                                                            action="{{ route('admin.users.role', $user) }}"
+                                                        >
+
+                                                            @csrf
+
+                                                            @method('PATCH')
+
+                                                            <input
+                                                                type="hidden"
+                                                                name="role"
+                                                                value="user"
+                                                            >
+
+                                                            <button
+                                                                type="submit"
+                                                                onclick="return confirm('Remove administrator access from {{ $user->name }}?')"
+                                                                class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition"
+                                                            >
+                                                                Remove Admin
+                                                            </button>
+
+                                                        </form>
+
+                                                    @else
+
+                                                        {{-- Make Admin --}}
+                                                        <form
+                                                            method="POST"
+                                                            action="{{ route('admin.users.role', $user) }}"
+                                                        >
+
+                                                            @csrf
+
+                                                            @method('PATCH')
+
+                                                            <input
+                                                                type="hidden"
+                                                                name="role"
+                                                                value="admin"
+                                                            >
+
+                                                            <button
+                                                                type="submit"
+                                                                onclick="return confirm('Make {{ $user->name }} an administrator?')"
+                                                                class="w-full inline-flex items-center justify-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg transition"
+                                                            >
+                                                                Make Admin
+                                                            </button>
+
+                                                        </form>
+
+                                                    @endif
+
+                                                @else
+
+                                                    <span
+                                                        class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm font-semibold rounded-lg"
+                                                    >
+                                                        Current Account
+                                                    </span>
+
+                                                @endif
+
+                                            </div>
 
                                         </td>
 
