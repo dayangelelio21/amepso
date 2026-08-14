@@ -23,48 +23,122 @@ class OrmecoController extends Controller
     /**
      * Find an ORMECO account using the account number.
      */
-    public function lookup(Request $request)
-    {
-        $request->validate([
-            'account_number' => [
-                'required',
-                'string',
-                'max:50',
-            ],
-        ]);
+    /**
+ * Find an ORMECO account using the account number.
+ */
+public function lookup(Request $request)
+{
+    $request->validate([
+        'account_number' => [
+            'required',
+            'string',
+            'max:50',
+        ],
+    ]);
 
-        $account = OrmecoAccount::where(
-            'account_number',
-            $request->account_number
-        )
-            ->where('user_id', Auth::id())
-            ->with([
-                'bills' => function ($query) {
-                    $query->where('status', 'unpaid')
-                        ->latest();
-                },
-            ])
-            ->first();
+    /*
+    |--------------------------------------------------------------------------
+    | Clean the account number
+    |--------------------------------------------------------------------------
+    |
+    | Keep it as a string because ORMECO account numbers can contain
+    | leading zeros.
+    |
+    */
 
-        if (!$account) {
-            return back()
-                ->withInput()
-                ->with('error', 'ORMECO account not found.');
-        }
+    $accountNumber = trim(
+        (string) $request->input('account_number')
+    );
 
-        $bill = $account->bills->first();
 
-        if (!$bill) {
-            return back()
-                ->withInput()
-                ->with(
-                    'error',
-                    'No unpaid ORMECO bill was found for this account.'
-                );
-        }
+    /*
+    |--------------------------------------------------------------------------
+    | Get the currently logged-in user
+    |--------------------------------------------------------------------------
+    */
 
-        return view('ormeco.bill', compact('account', 'bill'));
+    $user = Auth::user();
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Find the user's ORMECO account
+    |--------------------------------------------------------------------------
+    */
+
+    $account = OrmecoAccount::query()
+        ->where('user_id', $user->id)
+        ->where('account_number', $accountNumber)
+        ->with([
+            'bills' => function ($query) {
+
+                $query
+                    ->where('status', 'unpaid')
+                    ->orderBy('due_date')
+                    ->orderByDesc('id');
+
+            },
+        ])
+        ->first();
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Account not found
+    |--------------------------------------------------------------------------
+    */
+
+    if (!$account) {
+
+        return back()
+            ->withInput()
+            ->with(
+                'error',
+                'The ORMECO account number does not belong to your account.'
+            );
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Find the first unpaid bill
+    |--------------------------------------------------------------------------
+    */
+
+    $bill = $account->bills->first();
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | No unpaid bill
+    |--------------------------------------------------------------------------
+    */
+
+    if (!$bill) {
+
+        return back()
+            ->withInput()
+            ->with(
+                'error',
+                'Your ORMECO account was found, but there are no unpaid bills.'
+            );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Display bill
+    |--------------------------------------------------------------------------
+    */
+
+    return view(
+        'ormeco.bill',
+        compact(
+            'account',
+            'bill'
+        )
+    );
+}
 
     /**
      * Pay an ORMECO bill using the user's AMEPSO wallet.
