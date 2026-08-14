@@ -393,23 +393,6 @@
                         🧪
                     </div>
 
-                    <div>
-
-                        <p class="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                            Development Test Account
-                        </p>
-
-                        <p class="mt-1 text-sm text-amber-700 dark:text-amber-400">
-                            Account Number:
-                            <strong>123456789</strong>
-                        </p>
-
-                        <p class="mt-1 text-xs text-amber-600 dark:text-amber-500">
-                            This information is for local development testing only.
-                        </p>
-
-                    </div>
-
                 </div>
 
             </div>
